@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IF Student Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="brand">
+      <!-- Simpan gambar lambang dengan nama logo.png di folder yang sama -->
+      <img src="assets/Logo.png" alt="Lambang Departemen Teknik Informatika ITS" class="brand-logo">
+      <span class="brand-title">IF Student Management</span>
+    </div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#" class="active">Student</a>
+        <a href="#">About</a>
+      </nav>
+      <button type="button" class="profile-btn" title="Profil" aria-label="Profil">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <circle cx="12" cy="8" r="4" fill="currentColor"/>
+          <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ===== FORM STUDENT ===== -->
+    <section class="card form-card">
+      <h2>Form Student</h2>
+
+      <form id="studentForm" novalidate>
+        <div class="field">
+          <label for="nrp">NRP</label>
+          <input type="text" id="nrp" placeholder="Masukkan NRP" inputmode="numeric" maxlength="10" autocomplete="off">
+          <small class="error" id="err-nrp"></small>
+        </div>
+
+        <div class="field">
+          <label for="nama">Nama Lengkap</label>
+          <input type="text" id="nama" placeholder="Masukkan nama lengkap" autocomplete="off">
+          <small class="error" id="err-nama"></small>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Masukkan email @student.its.ac.id" autocomplete="off">
+          <small class="error" id="err-email"></small>
+        </div>
+
+        <div class="field">
+          <label id="prodi-label">Program Studi</label>
+          <div class="select" id="prodiSelect">
+            <button type="button" class="select-trigger" id="prodiTrigger"
+                    aria-haspopup="listbox" aria-expanded="false" aria-labelledby="prodi-label prodiText">
+              <span id="prodiText" class="placeholder">Pilih program studi</span>
+              <svg class="chevron" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="select-menu" id="prodiMenu" role="listbox" hidden>
+              <li role="option" data-value="Teknik Informatika">Teknik Informatika</li>
+              <li role="option" data-value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</li>
+              <li role="option" data-value="Rekayasa Kecerdasan Artifisial">Rekayasa Kecerdasan Artifisial</li>
+            </ul>
+          </div>
+          <input type="hidden" id="prodi">
+          <small class="error" id="err-prodi"></small>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="btnSimpan">Simpan</button>
+          <button type="button" class="btn btn-secondary" id="btnBatal">Batal</button>
+          <button type="button" class="btn btn-outline" id="btnRestart">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Restart
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== DATA MAHASISWA ===== -->
+    <section class="card table-card">
+      <h2>Data Mahasiswa</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="col-no">No</th>
+              <th>NRP</th>
+              <th>Nama</th>
+              <th>Program Studi</th>
+              <th>Email</th>
+              <th class="col-aksi">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="pagination" id="pagination" aria-label="Navigasi halaman"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
